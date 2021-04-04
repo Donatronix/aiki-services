@@ -67,7 +67,8 @@ Route::get('/delete-cache', function () {
 
 
 Route::get('/db-credentials', function () {
-    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+    $url = parse_url("mysql://b6e079f950dddf:961b7be4@us-cdbr-east-03.cleardb.com/heroku_749686457b96a54?reconnect=true");
 
     $server = $url["host"];
     $username = $url["user"];
@@ -76,6 +77,6 @@ Route::get('/db-credentials', function () {
 
     echo "DB_HOST=" . $server . '<br/>';
     echo "DB_USERNAME=" . $username . '<br/>';
-    echo "DB_Password=" . $password . '<br/>';
+    echo "DB_PASSWORD=" . $password . '<br/>';
     echo "DB_NAME=" . $db;
 });
