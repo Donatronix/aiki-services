@@ -39,7 +39,6 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan migrate --force",
             "@php artisan clear-compiled",
             "@php artisan cache:clear",
             "@php artisan view:clear",
