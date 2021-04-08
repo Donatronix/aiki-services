@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Assessment;
 
 use App\Models\Assessment\Assessment;
+use App\Models\Assessment\AssessmentAnswer as AssessmentAssessmentAnswer;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class AssessmentAnswer extends Component
@@ -36,8 +38,18 @@ class AssessmentAnswer extends Component
             $arr = $this->answers;
             $arr = array_filter(array_map('trim', $arr), fn ($value) => !is_null($value) && $value !== '');
             if (count($arr) > 0) {
-                foreach ($arr as $key => $answer) {
-                    # code...
+                foreach ($arr as $answer) {
+                    if (\is_numeric($answer)) {
+                        AssessmentAssessmentAnswer::create([
+                            'assessment_id' => $this->assessment->id,
+                            'assessment_option_id' => $this->answer,
+                        ]);
+                    } else {
+                        AssessmentAssessmentAnswer::create([
+                            'assessment_id' => $this->assessment->id,
+                            'answer' => $this->answer,
+                        ]);
+                    }
                 }
             }
         } catch (\Throwable $th) {
