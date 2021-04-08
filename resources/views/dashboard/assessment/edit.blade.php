@@ -87,6 +87,9 @@ Assessment - Edit
                             @livewire('assessment.assessment-answer', ['assessment' => $assessment])
                         </section>
                     </div>
+                    <div>
+                        <a href="{{ route('assessment.index') }}" class="waves-effect waves-light btn indigo">Back to Assessment Questions</a>
+                    </div>
                 </div>
             </div>
         </div>
