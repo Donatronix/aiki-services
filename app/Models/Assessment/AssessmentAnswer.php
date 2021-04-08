@@ -35,7 +35,7 @@ class AssessmentAnswer extends Model
      *
      * @var array
      */
-    protected $fillable = ['assessment_id', 'answer', assessment_option_id, 'slug'];
+    protected $fillable = ['assessment_id', 'answer', 'assessment_option_id', 'slug'];
 
     public function assessment()
     {

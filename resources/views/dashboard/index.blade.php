@@ -12,6 +12,16 @@ Dashboard
     <!-- info box -->
     <!-- ============================================================== -->
     <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <h5 class="card-title">Assessment</h5>
+                    <a href="{{ route('assessment.index') }}" class="waves-effect waves-light btn indigo">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col l9">
             <div class="card">
                 <div class="card-content">
