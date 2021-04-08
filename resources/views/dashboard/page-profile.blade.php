@@ -6,7 +6,7 @@ Profile
 
 @section('content')
 <!-- ============================================================== -->
-<!-- Container fluid scss in scafholding.scss -->
+<!-- Container fluid scss in scaffolding.scss -->
 <!-- ============================================================== -->
 <div class="container-fluid">
     <div class="row">

@@ -26,7 +26,7 @@
             @include('layouts.dashboard.includes.left-sidebar')
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- Page wrapper scss in scafholding.scss -->
+            <!-- Page wrapper scss in scaffolding.scss -->
             <!-- ============================================================== -->
             <div class="page-wrapper">
                 <!-- ============================================================== -->
@@ -36,7 +36,7 @@
                     <div class="d-flex align-items-center">
                         <h5 class="font-medium m-b-0">Contact Detail</h5>
                         <div class="ml-auto custom-breadcrumb">
-                            <a href="#!" class="breadcrumb">Home</a>
+                            <a href="{{ route('dashboard') }}" class="breadcrumb">Home</a>
                             <a href="#!" class="breadcrumb">Contact Detail</a>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                 @include('layouts.dashboard.includes.footer')
             </div>
             <!-- ============================================================== -->
-            <!-- Page wrapper scss in scafholding.scss -->
+            <!-- Page wrapper scss in scaffolding.scss -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             @include('layouts.dashboard.includes.right-sidebar')

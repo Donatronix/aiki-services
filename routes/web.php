@@ -32,6 +32,8 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/request-service', [PagesController::class, 'RequestService'])->middleware(['auth'])->name('request.service');
 Route::get('/service', [PagesController::class, 'service'])->name('service');
 
+require __DIR__ . '/assessment.php';
+require __DIR__ . '/assessmentOptions.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/technician.php';
 
@@ -53,10 +55,6 @@ Route::get('/clear-cache', function () {
 });
 
 Route::get('/delete-cache', function () {
-    if (function_exists('exec')) {
-        exec('rm ' . __DIR__ . '/bootstrap/cache/config.php');
-        exec('rm ' . __DIR__ . '/bootstrap/cache/pac5889.tmp');
-    }
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('config:clear');

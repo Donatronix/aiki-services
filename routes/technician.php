@@ -3,7 +3,7 @@
 use App\Http\Controllers\Technician\TechnicianController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'technician', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => '/dashboard/technician', 'middleware' => ['auth']], function () {
     Route::get('/', [TechnicianController::class, 'index'])->name('technician.index');
     Route::get('/new', [TechnicianController::class, 'create'])->name('technician.create');
     Route::post('/store', [TechnicianController::class, 'store'])->name('technician.store');

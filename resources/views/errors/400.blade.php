@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('pages/assets/images/favicon.png') }}">
-        <title>Aiki Services</title>
+        <title>Materialart Admin Template</title>
         <link href="{{ asset('pages/dist/css/style.css') }}" rel="stylesheet">
         <!-- This page CSS -->
         <link href="{{ asset('pages/dist/css/pages/error-pages.css') }}" rel="stylesheet">
@@ -22,9 +22,9 @@
         <section id="wrapper" class="error-page">
             <div class="error-box">
                 <div class="error-body center-align">
-                    <h1>500</h1>
-                    <h3>Internal Server Error!</h3>
-                    <p class="m-t-30 m-b-30">PLEASE TRY AFTER SOME TIME</p>
+                    <h1>400</h1>
+                    <h3>Bad Request!</h3>
+                    <p class="m-t-30 m-b-30">PLEASE CHECK YOUR URL</p>
                     <a href="{{ route('home') }}" class="btn red waves-effect waves-light m-b-40">Back to home</a>
                 </div>
             </div>

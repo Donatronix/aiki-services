@@ -4,7 +4,7 @@ Contact Detail
 @endsection
 @section('content')
 <!-- ============================================================== -->
-<!-- Container fluid scss in scafholding.scss -->
+<!-- Container fluid scss in scaffolding.scss -->
 <!-- ============================================================== -->
 <div class="container-fluid">
     <div class="row">
@@ -210,6 +210,6 @@ Contact Detail
     </div>
 </div>
 <!-- ============================================================== -->
-<!-- Container fluid scss in scafholding.scss -->
+<!-- Container fluid scss in scaffolding.scss -->
 <!-- ============================================================== -->
 @endsection

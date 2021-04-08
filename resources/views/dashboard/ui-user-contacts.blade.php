@@ -4,7 +4,7 @@
 
 
 <!-- ============================================================== -->
-<!-- Container fluid scss in scafholding.scss -->
+<!-- Container fluid scss in scaffolding.scss -->
 <!-- ============================================================== -->
 <div class="row">
     <div class="col l8 s12">
