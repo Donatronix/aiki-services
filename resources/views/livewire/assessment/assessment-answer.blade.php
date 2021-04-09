@@ -1,5 +1,9 @@
 <div class="col s12">
-    @include('errors.list')
+    @foreach ($errors->all() as $error)
+    <div>
+        <span class="red-text text-darken-2">{{ $error }}</span>
+    </div>
+    @endforeach
     <form wire:submit.prevent="addAnswer" method="POST">
         @csrf
         <div class="row">
@@ -12,9 +16,9 @@
                 <ol id="message5" style="list-style-type: upper-alpha;">
                     @foreach($options as $item)
                     <li>
-                        <label>
-                            <input class="with-gap" name="group3" wire:model.lazy="answers.{{ $loop->index }}" value="{{ $item->id }}" type="radio" required>
-                            <span>{{ $item->option }}</span>
+                        <label style="margin-left:2px;">
+                            <input class="with-gap" name="group3" wire:model.lazy="answers.0" value="{{ $item->id }}" type="radio" required>
+                            <span style="margin-left:20px;">{{ $item->option }}</span>
                         </label>
                     </li>
                     @endforeach
@@ -23,9 +27,9 @@
                 <ol id="message5" style="list-style-type: upper-alpha;">
                     @foreach($options as $item)
                     <li>
-                        <label>
+                        <label style="margin-left:2px;">
                             <input name="group3" wire:model.lazy="answers.{{ $loop->index }}" value="{{ $item->id }}" type="checkbox" class="filled-in" required>
-                            <span>{{ $item->option }}</span>
+                            <span style="margin-left:20px;">{{ $item->option }}</span>
                         </label>
                     </li>
                     @endforeach

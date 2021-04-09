@@ -7,7 +7,7 @@ $status = session()->get('status');
 @endphp
 
 @if ($errors)
-<div class="row text-center">
+<div class="text-center row">
     @if (is_array($errors) && count($errors) > 0)
     @foreach($errors->all() as $value)
     <div class="col-md-12">
@@ -20,7 +20,7 @@ $status = session()->get('status');
     @else
     <div class="alert alert-danger alert-dismissible" role="alert">
         <button class="close" type="button" data-dismiss="alert">×</button>
-        <strong>Error!</strong> <br /> {!! $errors !!}
+        <strong>Error!</strong> <br /> {!! $messages !!}
     </div>
     @endif
     @endif

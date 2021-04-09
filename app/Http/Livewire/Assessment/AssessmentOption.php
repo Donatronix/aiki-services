@@ -73,6 +73,6 @@ class AssessmentOption extends Component
             session()->flash('error', $th->getMessage());
         }
         DB::commit();
-        $this->emitSelf('render');
+        $this->emit('render');
     }
 }

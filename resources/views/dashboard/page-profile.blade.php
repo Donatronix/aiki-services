@@ -14,8 +14,9 @@ Profile
             <div class="card">
                 <div class="card-content">
                     <div class="center-align m-t-30"> <img src="{{ auth()->user()->avatar }}" class="circle" width="150" />
+
                         <h4 class="card-title m-t-10">{{ auth()->user()->name }}</h4>
-                        <h6 class="card-subtitle">{{ auth()->user()->getRoleNames()->first() }}</h6>
+                        <h6 class="card-subtitle">{{ ucwords(auth()->user()->getRoleNames()->first()) }}</h6>
                         <div class="center-align">
                             <div>
                                 <a href="javascript:void(0)" class="m-r-40"><i class="icon-people"></i>
@@ -24,6 +25,41 @@ Profile
                                     <font class="font-medium">54</font></a>
                             </div>
                         </div>
+                        <h4 class="card-title m-t-10">Assessment Score: {{ auth()->user()->assessmentScore() }}</h4>
+                        @if(auth()->user()->assessmentScore()==0)
+                        <hr>
+                        <div class="card-content">
+                            @foreach ($errors->all() as $error)
+                            <div>
+                                <span class="red-text text-darken-2">{{ $error }}</span>
+                            </div>
+                            @endforeach
+                            <form action="{{ route('technician.assessment',['technician'=>auth()->user()->slug]) }}" method="GET">
+                                @if (auth()->user()->getRoleNames()->first()==null)
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <select name="category" required>
+                                            <option value="" @if( null===old('category')) selected @endif>Select technician category</option>
+                                            <option value="plumber" @if('plumber'===old('category')) selected @endif>Plumber</option>
+                                            <option value="carpenter" @if('carpenter'===old('category')) selected @endif>Carpenter</option>
+                                            <option value="mechanic" @if('mechanic'===old('category')) selected @endif>Mechanic</option>
+                                        </select>
+                                        <label>Select technician category</label>
+                                        @if ($errors->has('category'))
+                                        <span class="red-text text-darken-2">{{ $errors->first('category') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <button class="btn cyan waves-effect waves-light" type="submit" name="action">Take test
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <hr>
@@ -42,6 +78,7 @@ Profile
                     <a href="javascript:void(0)" class="btn-floating blue darken-1 m-t-10"><i class="fab fa-twitter"></i></a>
                     <a href="javascript:void(0)" class="btn-floating deep-orange m-t-10"><i class="fab fa-youtube"></i></a>
                 </div>
+
             </div>
         </div>
         <div class="col s12 m8">

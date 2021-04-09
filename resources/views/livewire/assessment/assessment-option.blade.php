@@ -1,9 +1,14 @@
 <div class="col s12">
-    @include('errors.list')
+     @foreach ($errors->all() as $error)
+     <div>
+         <span class="red-text text-darken-2">{{ $error }}</span>
+     </div>
+     @endforeach
     <div class="row">
         <ol style="list-style-type: upper-alpha;">
             @foreach($options as $item)
-            <li>{{ $item->option }} <a class="waves-effect waves-light btn red" title="Delete" wire:click.prevent="removeOption('{{ $item->slug }}')"><i class="material-icons">close</i></a>
+            <li>
+                {{ $item->option }} <a class="waves-effect waves-light btn red" title="Delete" wire:click.prevent="removeOption('{{ $item->slug }}')"><i class="material-icons close">close</i></a>
             </li>
             @endforeach
         </ol>
@@ -20,7 +25,6 @@
                 @enderror
             </div>
         </div>
-
         <div class="row">
             <div class="input-field col s12">
                 <button class="btn cyan waves-effect waves-light right" type="submit" name="action">

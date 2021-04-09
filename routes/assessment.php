@@ -3,7 +3,7 @@
 use App\Http\Controllers\Assessment\AssessmentController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => '/dashboard/assessment', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => '/dashboard/assessment', 'middleware' => ['admin']], function () {
     Route::get('/', [AssessmentController::class, 'index'])->name('assessment.index');
     Route::get('/new', [AssessmentController::class, 'create'])->name('assessment.create');
     Route::post('/store', [AssessmentController::class, 'store'])->name('assessment.store');

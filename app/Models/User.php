@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Assessment\AssessmentParticipantController;
+use App\Models\Assessment\AssessmentParticipant;
+use App\Models\Assessment\AssessmentResponse;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -94,17 +97,29 @@ class User extends Authenticatable
     /**
      * Scope a query to only include technicians
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param  mixed $query
+     * @return void
      */
-    public function scopeTechnicians(Builder $query)
+    public function scopeTechnicians($query)
     {
-        return $query->whereDoesntHave('roles', function (Builder $query) {
-            $query->where('roles.name', 'admin');
-        })
-            ->orWhereDoesntHave('roles', function (Builder $query) {
-                $query->where('roles.name', 'super admin');
-            })
-            ->orderBy('name', 'asc');
+        return $query->whereHas('roles', function ($query) {
+            $query->where('roles.name', '<>', 'admin');
+        })->orderBy('name', 'asc');
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(AssessmentResponse::class);
+    }
+
+    public function participant()
+    {
+        return $this->hasOne(AssessmentParticipant::class);
+    }
+
+    public function assessmentScore()
+    {
+        $ctrl = new AssessmentParticipantController;
+        return $ctrl->evaluateScore($this);
     }
 }

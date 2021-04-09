@@ -38,7 +38,7 @@
                                 <td class="center-align">{{ ucwords($question->question_type) }}</td>
                                 <td>{{ $question->question }}</td>
                                 <td>
-                                    <ol style="list-style-type: upper-alpha;">
+                                    <ol>
                                         @foreach($question->options as $item)
                                         <li>{{ $item->option }}</li>
                                         @endforeach
@@ -47,19 +47,19 @@
                                 <td>
                                     <ul>
                                         @foreach($question->answers as $item)
-                                        <li>{{ $item->answer }}</li>
+                                        <li>{{ $item->answer ?? $item->assessmentOption->option }}</li>
                                         @endforeach
                                     </ul>
                                 </td>
                                 <td class="center-align">{{ $question->score }}</td>
                                 <td class="center-align">
-                                    <a href="{{ route('assessment.edit',['assessment' => $question->slug]) }}" class="waves-effect waves-light btn indigo">
-                                        <i class="material-icons left">edit</i><span>Edit</span>
+                                    <a href="{{ route('assessment.edit',['assessment' => $question->slug]) }}" class="waves-effect waves-light btn indigo" title="Edit">
+                                        <i class="material-icons">edit</i>
                                     </a>
                                 </td>
                                 <td class="center-align">
-                                    <a href="/assessment/delete" class="waves-effect waves-light btn red" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                                        <i class="material-icons left">close</i><span>Delete</span>
+                                    <a href="/assessment/delete" class="waves-effect waves-light btn red" title="Delete" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                                        <i class="material-icons">close</i>
                                     </a>
                                     <form id="delete-form" action="{{ route('assessment.delete',['assessment'=>$question->slug]) }}" method="POST" style="display: none;">
                                         @method('DELETE')

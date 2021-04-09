@@ -10,7 +10,11 @@ Login
 <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url({{ asset('pages/assets/images/big/auth-bg.jpg') }}) no-repeat center center;">
     <div class="auth-box">
         <div id="loginform">
-            @include('errors.list')
+            @foreach ($errors->all() as $error)
+            <div>
+                <span class="red-text text-darken-2">{{ $error }}</span>
+            </div>
+            @endforeach
             <div class="logo">
                 <span class="db"><img src="{{ asset('pages/assets/images/logo-icon.png') }}" alt="logo" /></span>
                 <h5 class="font-medium m-b-20">Sign In</h5>

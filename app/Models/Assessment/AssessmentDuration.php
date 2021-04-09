@@ -2,14 +2,11 @@
 
 namespace App\Models\Assessment;
 
-use App\Models\Assessment\AssessmentAnswer;
-use App\Models\Assessment\AssessmentOption;
-use App\Models\Assessment\AssessmentResponse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Assessment extends Model
+class AssessmentDuration extends Model
 {
     use HasFactory;
 
@@ -19,11 +16,9 @@ class Assessment extends Model
      * @var array
      */
     protected $fillable = [
-        'id',
-        "question",
-        "category",
-        "score",
-        "question_type",
+        'slug',
+        'duration',
+        'duration_type',
     ];
 
     /**
@@ -42,20 +37,5 @@ class Assessment extends Model
         self::saving(function ($model) {
             $model->slug = Str::random(50);
         });
-    }
-
-    public function answers()
-    {
-        return $this->hasMany(AssessmentAnswer::class);
-    }
-
-    public function options()
-    {
-        return $this->hasMany(AssessmentOption::class);
-    }
-
-    public function responses()
-    {
-        return $this->hasMany(AssessmentResponse::class);
     }
 }

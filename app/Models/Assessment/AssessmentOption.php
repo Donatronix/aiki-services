@@ -2,6 +2,9 @@
 
 namespace App\Models\Assessment;
 
+use App\Models\Assessment\Assessment;
+use App\Models\Assessment\AssessmentAnswer;
+use App\Models\Assessment\AssessmentResponse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -39,5 +42,15 @@ class AssessmentOption extends Model
     public function assessment()
     {
         return $this->belongsTo(Assessment::class);
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(AssessmentAnswer::class);
+    }
+
+    public function responses()
+    {
+        return $this->hasMany(AssessmentResponse::class);
     }
 }

@@ -3,7 +3,7 @@
 use App\Http\Controllers\Assessment\AssessmentOptionController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => '/dashboard/assessment/{assessment}/options', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => '/dashboard/assessment/{assessment}/options', 'middleware' => ['admin']], function () {
     Route::get('/', [AssessmentOptionController::class, 'index'])->name('assessment.option.index');
     Route::get('/new', [AssessmentOptionController::class, 'create'])->name('assessment.option.create');
     Route::post('/store', [AssessmentOptionController::class, 'store'])->name('assessment.option.store');

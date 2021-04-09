@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 class PagesController extends Controller
 {
@@ -15,6 +14,15 @@ class PagesController extends Controller
      */
     public function index()
     {
+        if (auth()->user()) {
+            if (auth()->user()->isAdmin) {
+                $dashboard = new DashboardController;
+                return $dashboard->dashboard();
+            } else {
+                return view('dashboard.page-profile');
+            }
+        }
+
         return view('pages.index');
     }
 

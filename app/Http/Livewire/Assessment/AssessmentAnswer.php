@@ -14,8 +14,12 @@ class AssessmentAnswer extends Component
     public $answers = [];
     public $options;
 
+    protected $listeners = [
+        'render',
+    ];
+
     protected $rules = [
-        'answer' => 'required',
+        'answers' => 'required',
     ];
 
 
@@ -42,12 +46,12 @@ class AssessmentAnswer extends Component
                     if (\is_numeric($answer)) {
                         AssessmentAssessmentAnswer::create([
                             'assessment_id' => $this->assessment->id,
-                            'assessment_option_id' => $this->answer,
+                            'assessment_option_id' => $answer,
                         ]);
                     } else {
                         AssessmentAssessmentAnswer::create([
                             'assessment_id' => $this->assessment->id,
-                            'answer' => $this->answer,
+                            'answer' => $answer,
                         ]);
                     }
                 }
@@ -58,5 +62,6 @@ class AssessmentAnswer extends Component
             return;
         }
         DB::commit();
+        $this->emitSelf('render');
     }
 }

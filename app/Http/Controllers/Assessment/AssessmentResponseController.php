@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Assessment;
 
+use App\Models\Assessment\Assessment;
 use App\Models\Assessment\AssessmentResponse;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AssessmentResponseController extends Controller
 {
@@ -81,5 +83,17 @@ class AssessmentResponseController extends Controller
     public function destroy(AssessmentResponse $assessmentResponse)
     {
         //
+    }
+
+
+    public function getResponse(Assessment $assessment)
+    {
+        $user = auth()->user();
+        $response = $user->responses->where('assessment_id', $assessment->id)->first();
+        if(($response->assessment->question_type=='select')||($response->assessment->question_type=='text')||($response->assessment->question_type=='number'))
+        {if ($response) {
+            return $response->response ?? $response->assessment_option_id;
+        }}
+        return null;
     }
 }

@@ -35,7 +35,13 @@ class AppServiceProvider extends ServiceProvider
     {
         //morph map
         Relation::morphMap([
-            'User'                       => 'App\Models\User',
+            'User'                  => 'App\Models\User',
+            'Assessment'            => 'App\Models\Assessment\Assessment',
+            'AssessmentAnswer'      => 'App\Models\Assessment\AssessmentAnswer',
+            'AssessmentDuration'    => 'App\Models\Assessment\AssessmentDuration',
+            'AssessmentOption'      => 'App\Models\Assessment\AssessmentOption',
+            'AssessmentParticipant' => 'App\Models\Assessment\AssessmentParticipant',
+            'AssessmentResponse'    => 'App\Models\Assessment\AssessmentResponse',
         ]);
     }
 }

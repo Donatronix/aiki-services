@@ -12,7 +12,11 @@
     <div class="row">
         <div class="col s12">
             <div class="card">
-                @include('errors.list')
+                @foreach ($errors->all() as $error)
+                <div>
+                    <span class="red-text text-darken-2">{{ $error }}</span>
+                </div>
+                @endforeach
                 <div class="card-content">
                     <form action="{{ route('assessment.store') }}" method="POST">
                         <div class="row">
@@ -59,6 +63,9 @@
                             <div class="input-field col s12">
                                 <input id="score" name="score" type="text" required>
                                 <label for="score" class="">Score</label>
+                                @if ($errors->has('score'))
+                                <span class="red-text text-darken-2">{{ $errors->first('score') }}</span>
+                                @endif
                             </div>
                         </div>
 

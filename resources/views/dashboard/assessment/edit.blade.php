@@ -9,7 +9,11 @@ Assessment - Edit
 <!-- Container fluid scss in scaffolding.scss -->
 <!-- ============================================================== -->
 <div class="container-fluid">
-    @include('errors.list')
+    @foreach ($errors->all() as $error)
+    <div>
+        <span class="red-text text-darken-2">{{ $error }}</span>
+    </div>
+    @endforeach
     <div class="row">
         <div class="col s12">
             <div class="card">
@@ -106,6 +110,15 @@ Assessment - Edit
 @livewireScripts
 <script>
     jQuery(function () {
+        $(document).on("keypress keyup blur", ".allowNumericWithDecimal", function (event) {
+            //this.value = this.value.replace(/[^0-9\.]/g,'');
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ""));
+            if (
+                (event.which !== 46 || $(this).val().indexOf(".") !== -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
         $('.allowNumericWithDecimal').on("paste", function (e) {
             var text = e.originalEvent.clipboardData.getData('Text');
             if (isNumber(text)) {

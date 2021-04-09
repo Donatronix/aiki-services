@@ -12,7 +12,11 @@
             </div>
         </div>
         <div class="col-md-5">
-            @include('errors.list')
+            @foreach ($errors->all() as $error)
+            <div>
+                <span class="red-text text-darken-2">{{ $error }}</span>
+            </div>
+            @endforeach
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="form-group">
