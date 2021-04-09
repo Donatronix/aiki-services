@@ -12,6 +12,17 @@ use Illuminate\Support\Str;
 class AssessmentResponse extends Model
 {
     use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'slug',
+        'assessment_id',
+        'assessment_option_id',
+        'response',
+    ];
 
     /**
      * Get the route key for the model.
