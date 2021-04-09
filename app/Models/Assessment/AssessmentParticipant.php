@@ -11,6 +11,19 @@ class AssessmentParticipant extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'slug',
+        'user_id',
+        'started_by',
+        'completed_by',
+        'status',
+    ];
+
+    /**
      * Get the route key for the model.
      *
      * @return string
