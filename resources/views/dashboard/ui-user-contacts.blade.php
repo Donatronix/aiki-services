@@ -43,9 +43,6 @@
                                 <td>{{ $technician->assessmentScore() }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn red" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                    <a href="{{ route('technician.assessment.show.score',['technician'=>$technician->slug]) }}" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Assessment Score">
-                                        <i class="ti-eye" aria-hidden="true"></i> Score
-                                    </a>
                                 </td>
                             </tr>
                             @endforeach
