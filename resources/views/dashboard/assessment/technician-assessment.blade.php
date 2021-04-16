@@ -15,6 +15,7 @@ Technician assessment
         <div class="col s12">
             <div class="card">
                 <div class="card-content">
+                    @include('dashboard.assessment.assessment-timer',['deadline'=>$deadline])
                     <h5 class="card-title"></h5>
                     <h6 class="card-subtitle"></h6>
                     <div id="example-vertical" class="m-t-40">

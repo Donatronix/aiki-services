@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Assessment\Assessment;
 use App\Models\Assessment\AssessmentParticipant;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -42,9 +43,10 @@ class AssessmentParticipantController extends Controller
             }
             $category = $technician->getRoleNames()->first();
 
-            AssessmentParticipant::firstOrCreate([
+            $participant = AssessmentParticipant::firstOrCreate([
                 'user_id' => $technician->id,
                 'status' => 'in progress',
+                'completed_by' => Carbon::now()->addHour()
             ]);
         } catch (\Throwable $th) {
             DB::rollback();
@@ -54,7 +56,8 @@ class AssessmentParticipantController extends Controller
         DB::commit();
         return view('dashboard.assessment.technician-assessment', [
             'technician' => $technician,
-            'assessments' => Assessment::whereCategory($category)->get()
+            'assessments' => Assessment::whereCategory($category)->get(),
+            'deadline' => $participant->completed_by,
         ]);
     }
 

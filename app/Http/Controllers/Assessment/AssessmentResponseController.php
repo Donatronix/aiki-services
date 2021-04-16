@@ -90,10 +90,13 @@ class AssessmentResponseController extends Controller
     {
         $user = auth()->user();
         $response = $user->responses->where('assessment_id', $assessment->id)->first();
-        if(($response->assessment->question_type=='select')||($response->assessment->question_type=='text')||($response->assessment->question_type=='number'))
-        {if ($response) {
-            return $response->response ?? $response->assessment_option_id;
-        }}
+        if ($response) {
+            if (($response->assessment->question_type == 'select') || ($response->assessment->question_type == 'text') || ($response->assessment->question_type == 'number')) {
+                if ($response) {
+                    return $response->response ?? $response->assessment_option_id;
+                }
+            }
+        }
         return null;
     }
 }
